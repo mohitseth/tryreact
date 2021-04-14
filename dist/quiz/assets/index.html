@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <title>Awake Humanity</title>
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <meta name="viewport" content="width=device-width" />
+      <!--     Fonts and icons     -->
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+      <!-- CSS Files -->
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+      <script src="js/cities.js" type="text/javascript"></script>
+      <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script> 
+      <script src="https://use.fontawesome.com/704a25b569.js"></script>
+      <link href="css/home.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdRjvsUAAAAAI-G7aVe6wHlKgQ8FC9L6FBso5xD"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js">
+    </script>
+   </head>
+   <body>
+      <div class="loading"></div>
+      <div class="image-container set-full-height" style="background-image: url('assets/img/wizard.jpg')">
+         <!--   Creative Tim Branding   -->
+         <center>   <img src="img/olym-png.png" width="120px">
+         </center>
+         <!--   Big container   -->
+         <div class="container" ng-app="postApp" ng-controller="postController">
+            <div class="row">
+               <div class="col-sm-8 col-sm-offset-2">
+                  <!--      Wizard container        -->
+                  <div class="wizard-container" style="padding-top:0px;">
+                     <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                        <form method="post" id="onpageContactForm" enctype="multipart/form-data" name="userForm" ng-submit="submitForm()">
+                           <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+                           <!-- <div class="wizard-header">
+                              <h3>
+                                 <b>BUILD</b> YOUR PROFILE <br>
+                                 <small>This information will let us know more about you.</small>
+                              </h3>
+                              </div> -->
+                           <div class="wizard-navigation">
+                              <ul>
+                                 <li><a href="#about" data-toggle="tab">About</a></li>
+                                 <li><a href="#account" data-toggle="tab">Language</a></li>
+                                 <li><a href="#address" data-toggle="tab">Instructions</a></li>
+                              </ul>
+                           </div>
+                           <div class="tab-content">
+                              <div class="tab-pane" id="about">
+                                 <div class="row">
+                                    <!--  <h4 class="info-text"> Let's start with the basic information (with validation)</h4> -->
+                                    <!-- <div class="col-sm-4 col-sm-offset-1">
+                                       <div class="picture-container">
+                                            <div class="picture">
+                                                <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                <input type="file" id="wizard-picture">
+                                            </div>
+                                            <h6>Choose Picture</h6>
+                                        </div>
+                                       </div> -->
+                                    <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label>Full Name <small>(required)</small></label>
+                                          <input name="fname" id="fname" type="text" class="form-control" placeholder="Please enter your name" required ng-model="user.fname">
+        <span ng-show="errorName">{{errorName}}</span>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>Phone <small>(required)</small></label>
+                                          <input type="text" id="phone" name="phone" class="form-control"  onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57 || event.charCode == 43 || event.charCode == 45 || event.charCode == 0" minlength="10" maxlength="10" placeholder="10 Digit Mobile No." required ng-model="user.phone">
+        <span ng-show="errorName">{{errorName}}</span>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>Email <small>(required)</small></label>
+                                          <input name="email" id="email" type="email" class="form-control" placeholder="Please enter your email" required ng-model="user.email">
+        <span ng-show="errorName">{{errorName}}</span>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>Class <small>(required)</small></label>
+                                          <select name="standard" id="standard"  class="form-control standard" required ng-model="user.class">
+        
+                                             <option value="">Select Class</option>
+                                             <option value="5">5th</option>
+                                             <option value="6">6th</option>
+                                             <option value="7">7th</option>
+                                             <option value="8">8th</option>
+                                             <option value="9">9th</option>
+                                             <option value="10">10th</option>
+                                             <option value="11">11th</option>
+                                             <option value="12">12th</option>
+                                             <option value="College">College</option>
+                                             <option value="Individual">Individual</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>School/College Name <small>(required)</small></label>
+                                          <input name="school_name" id="school_name" type="text" class="form-control" placeholder="School Name" required ng-model="user.school_name">
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <div class="form-group">
+                                          <label>School/College Code <small>(required)</small></label>
+                                          <input name="school_code" id="school_code" type="text" class="form-control" placeholder="School Code" required ng-model="user.school_code">
+                                       </div>
+                                       <div class="form-group">
+                                          <label>Country <small>(required)</small></label>
+            <select name="country" class="countries order-alpha form-control " id="countryId" required ng-model="user.country">
+                            <option selected>Select Country</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>State <small>(required)</small></label>
+                                          <select name="state" class="states order-alpha form-control" id="stateId" required ng-model="user.state">
+                                             <option value="">Select State</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>City <small>(required)</small></label>
+                                          <select name="city" class="cities order-alpha form-control" id="cityId" required ng-model="user.city">
+                                             <option value="">Select City</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group">
+                                          <label>Referrer <small>(required)</small></label>
+                                          <input name="referrer" id="referrer" type="text" class="form-control" placeholder="If any else none" required ng-model="user.referrer">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="tab-pane" id="account">
+                                 <h4 class="info-text">Preferred Language ? </h4>
+                                 <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                       <div class="col-sm-4">
+                                          <div class="kt-radio-list">
+                                             <label class="kt-radio kt-radio--bold kt-radio--success">
+                                             <input type="radio" name="language" class="language"  value="english" required ng-model="user.language"><strong>English</strong>
+                                             <span></span>
+                                             </label>
+                                             <label class="kt-radio kt-radio--bold kt-radio--brand">
+                                             <input type="radio" name="language" class="language"  value="hindi" ng-model="user.language"><strong>Hindi</strong>
+                                             <span></span>
+                                             </label>
+                                             <label class="kt-radio kt-radio--bold kt-radio--danger">
+                                             <input type="radio" name="language" class="language"  value="punjabi" ng-model="user.language"><strong>Punjabi</strong>
+                                             <span></span>
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="tab-pane" id="address">
+                                 <div class="row">
+                                    <div class="col-sm-12">
+                                       <div id="english" style="display:none;">
+                                          <h4 class="info-text">Important Instructions </h4>
+                                          <p>1. This test is based on MCQ pattern</p>
+                                          <p>2. There can be more than one correct answers</p>
+                                          <p>3. Time duration : 15 minutes</p>
+                                          <p>4. Questions : 25</p>
+                                          <p>5. Marking Scheme : +4 for every right answer & -1 for every wrong answer</p>
+                                          <p>6. Passing percentage : 40%</p>
+                                          <p>7. Once you complete the test, result and certificate will be available immediately</p>
+                                       </div>
+                                       <div id="hindi" style="display:none;">
+                                          <h4 class="info-text">महत्वपूर्ण निर्देश</h4>
+                                          <p> क)    यह परीक्षा बाहुल्य चयन प्रश्नों (MCQ's) पर आधारित है।</p>
+                                          <p>ख)     दिए गए विकल्पों में से एक से अधिक विकल्प भी सही हो सकते हैं।</p>
+                                          <p>ग)     समय सीमा - 15 मिनट है।       </p>
+                                          <p>घ)     कुल प्रश्न - 25 हैं।</p>
+                                          <p>च)    अंक आबंटन प्रक्रिया:- +4 अंक प्रत्येक सही उत्तर के लिये दिए जाएंगे तथा 1 अंक प्रत्येक  गलत  उत्तर के लिये काटा जाएगा।</p>
+                                          <p>छ)     पासिंग  प्रतिशत - 40% है।</p>
+                                          <p>ज)     जैसे ही आप अपना टेस्ट पूर्ण कर लेंगे, परिणाम तथा प्रमाण-पत्र तुरन्त ही प्राप्त हो जायेगा।</p>
+                                       </div>
+                                       <div id="punjabi" style="display:none;">
+                                          <h4 class="info-text"> ਮਹੱਤਵਪੂਰਣ ਦਿਸ਼ਾ:</h4>
+                                          <p>ਇਹ ਟੈਸਟ ਬਹੁ-ਚੋਣ ਪ੍ਰਸ਼ਨ ਪੈਟਰਨ ਤੇ ਅਧਾਰਤ ਹੈ</p>
+                                          <p>ਇਕ ਤੋਂ ਵੱਧ ਸਹੀ ਉੱਤਰ ਹੋ ਸਕਦੇ ਹਨ25</p>
+                                          <p>ਸਮਾਂ ਮਿਆਦ: 15 ਮਿੰਟ</p>
+                                          <p>ਪ੍ਰਸ਼ਨ: 25</p>
+                                          <p>ਮਾਰਕਿੰਗ ਸਕੀਮ: ਹਰੇਕ ਸਹੀ ਉੱਤਰ ਲਈ +4 ਅਤੇ ਹਰੇਕ ਗਲਤ ਜਵਾਬ ਲਈ -1</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="wizard-footer height-wizard">
+                              <div class="pull-right">
+                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+                                 <button  class="btn btn-finish btn-fill btn-warning btn-wd btn-sm" id="submit" type="submit">Start Quiz</button>
+                              </div>
+                              <div class="pull-left">
+                                 <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm'  name='previous' value='Previous' />
+                              </div>
+                             
+                              <div class="clearfix"></div>
+                           </div>
+                            
+                        </form>
+                     </div>
+                  </div>
+                  <!-- wizard container -->
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!--  big container -->
+         <script>
+            $(function () {
+                $( ".language" ).click(function() {
+            
+            
+            var language1 = $("input[name='language']:checked").val();
+                     
+                    
+                    if (language1=="english") {
+                        $("#english").show();
+                         $("#hindi").hide();
+                          $("#punjabi").hide();
+                    } else if(language1=="hindi") {
+                        $("#hindi").show();
+                          $("#english").hide();
+                       
+                          $("#punjabi").hide();
+                    }
+                    else 
+                    {
+                    $("#hindi").hide();
+                    $("#english").hide();
+                    $("#punjabi").show();
+                    }
+                });  
+               
+            });
+            
+         </script>
+         <script>
+            $(function () {
+                $( ".standard" ).change(function() {
+             var standard = $("select[name='standard']").val(); 
+                    if (standard=="Individual") {
+                        $("input#school_name").prop('disabled', true);
+                       $("input#school_code").prop('disabled', true);
+                        $("input#school_name").removeAttr("required"); 
+                           $("input#school_code").removeAttr("required"); 
+                    } 
+                    else{
+                        $("input#school_name").prop('disabled', false);
+                       $("input#school_code").prop('disabled', false);
+                       $("input#school_name").attr("required");
+                        $("input#school_name").attr("required");
+                            
+                        
+                    }
+                });  
+               
+            });
+         </script>
+          <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LdRjvsUAAAAAI-G7aVe6wHlKgQ8FC9L6FBso5xD', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
+        <script>
+var postApp = angular.module('postApp', []);
+    postApp.controller('postController', function($scope, $http) {
+      $scope.user = {};
+        $scope.submitForm = function() {
+        $http({
+          method  : 'POST',
+          url     : 'https://save2rent.com/humanity2021/api/public/login',
+          data    : $scope.user,
+          headers : { 'Content-Type': 'application/json' } 
+         })
+          .success(function(data) {
+            if (data.errors) {
+              $scope.errorName = data.errors.name;
+              $scope.errorUserName = data.errors.username;
+              $scope.errorEmail = data.errors.email;
+            } else {
+              $scope.message = data.message;
+            }
+          });
+        };
+    });
+</script>
+         <div class="footer">
+            <div class="container">
+                <strong> Proudly made by <a href="http://www.satyugdarshantrust.org/">Satyug Darshan Trust</a> for upliftment of the Society </strong>
+            </div>
+         </div>
+      </div>
+      <script>
+         function start(){
+         var message=localStorage.getItem("message");
+         showToastr("error", "Error", message);  
+         setTimeout(loadResponse, 3000); // Setting arbitrary timeout here so we can see the 'loading' state.
+         localStorage.removeItem("message");
+         };
+         function showToastr(type, title, message) {
+           let body;
+           toastr.options = {
+           "closeButton": true,
+           "debug": false,
+           "newestOnTop": false,
+           "progressBar": false,
+           "positionClass": "toast-bottom-right",
+           "preventDuplicates": true,
+           "showDuration": "300",
+           "hideDuration": "1000",
+           "timeOut": 0,
+           "onclick": null,
+           "onCloseClick": null,
+           "extendedTimeOut": 0,
+           "showEasing": "swing",
+           "hideEasing": "linear",
+           "showMethod": "fadeIn",
+           "hideMethod": "fadeOut",
+           "tapToDismiss": false
+         };
+         switch(type){
+           case "info": body = "<span> <i class='fa fa-spinner fa-pulse'></i></span>";
+               break;
+           default: body = '';
+         }
+         const content = message + body;
+         toastr[type](content, title)
+         window.setTimeout(function(){location.reload()},3000)
+         }
+      </script>
+  
+   <!--   Core JS Files   -->
+   <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+   <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+   <!--  Plugin for the Wizard -->
+   <script src="assets/js/gsdk-bootstrap-wizard.js"></script>
+   <!--  More information about jquery.validate here: http://jqueryvalidation.org/   -->
+   <script src="assets/js/jquery.validate.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+     <script>
+     $(document).ready(function() {
+    $('.countries').select2();
+   $('.states').select2();
+   $('.cities').select2();
+});
+     </script>
+      </body>
+     <script src="js/location.js"></script> 
+</html>
