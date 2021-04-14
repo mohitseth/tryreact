@@ -1,0 +1,194 @@
+<ngx-spinner></ngx-spinner>
+<div class="main" >
+<div class="row">
+   <div style="justify-content: center;" class="col-12">
+      <div>
+         <p style="text-align:center;" ><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+      </div>
+   </div>
+   <div class="card col-xl-6 col-lg-6 col-sm-8 col-10 ">
+      
+      <div class="top-nav">
+         <div class="highlight" >
+            ABOUT
+         </div>
+         <div  [ngClass]="selectedTab === 'ABOUT' ? 'tab active' : 'tab'">
+            ABOUT
+         </div>
+         <div  [ngClass]="selectedTab === 'LANGUAGE' ? 'tab active' : 'tab'">
+            LANGUAGE
+         </div>
+         <div [ngClass]="selectedTab === 'INSTRUCTIONS' ? 'tab active' : 'tab'">
+            INSTRUCTIONS
+         </div>
+      </div>
+      <div class="">
+         <div *ngIf="i==0" style="font-size: 14px !important;" class="tabData">
+            <div class="row">
+               <form [formGroup]="profileForm">
+                  <div class="row">
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">Full Name:</div>
+                     <input required [ngClass]="{'error': (fName.touched || fName.dirty) && fName.invalid}" type="text" placeholder="Please Enter Your Name" formControlName="fName">
+                     <div class="error" *ngIf="(fName.touched || fName.dirty) && fName.invalid">This field is required</div>
+                     </div>
+                  
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">School/College Code:</div>
+                     <input  required [ngClass]="{'error': (schoolCode.touched || schoolCode.dirty) && schoolCode.invalid}" type="text" placeholder="School Code" formControlName="schoolCode">
+                     <div class="error" *ngIf="(schoolCode.touched || schoolCode.dirty) && schoolCode.invalid">This field is required</div>
+                     
+                     </div>
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">Phone:</div>
+
+                        
+                        
+                        <input [ngClass]="{'error': (phone.touched || phone.dirty) && phone.invalid}"  required type="text" placeholder="10 Digit Mobile No" formControlName="phone">
+                     <div class="error" *ngIf="(phone.touched || phone.dirty) && phone.invalid">This field is required</div>
+
+                     </div>    <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">Country:</div>
+                        
+
+                     <select class="custom-select" (change)="change($event,'country')" formControlName="country">
+                        <option value="" disabled>Choose your Country</option>
+                        <option *ngFor="let country of Countries" value="{{country.isoCode}}">{{country.name}}</option>
+                     </select>                    
+                      <div class="error" *ngIf="profileForm.value.country == '' && submit">This field is required</div>
+
+                     </div>    <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                        
+                     <div class="label">Email:</div>
+
+                        <input  required [ngClass]="{'error': (email.touched || email.dirty) && email.invalid}" placeholder="Please Enter Your Email" type="text" formControlName="email">
+                     <div class="error" *ngIf="(email.touched || email.dirty) && email.invalid">This field is required</div>
+
+                     </div>
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                        
+                     <div class="label">State:</div>
+
+                     <select class="custom-select" (change)="change($event,'state')" formControlName="state">
+                        <option value="" disabled>Choose your State</option>
+                        <option *ngFor="let state of State" value="{{state.isoCode}}">{{state.name}}</option>
+                     </select>
+                     <div class="error" *ngIf="profileForm.value.state == '' && submit">This field is required</div>
+
+                     </div>
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                        
+                     <div class="label">Class:</div>
+
+                     <select class="custom-select" (change)="change($event,'class')" formControlName="class">
+                        <option value="" disabled>Choose your Class</option>
+                        <option *ngFor="let class of Class" value="{{class}}">{{class}}</option>
+                     </select>                      
+                     <div class="error" *ngIf="profileForm.value.class == '' && submit">This field is required</div>
+
+                     </div>
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">City:</div>
+                        
+                        
+                     <select class="custom-select" (change)="change($event,'city')" formControlName="city">
+                        <option value="" disabled>Choose your City</option>
+                        <option *ngFor="let city of City" value="{{city.name}}">{{city.name}}</option>
+                     </select>                    
+                      <div class="error" *ngIf="profileForm.value.city == '' && submit">This field is required</div>
+
+                     </div> <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                        
+                     <div class="label">School/College Name:</div>
+                     <input  [ngClass]="{'error': (school.touched || school.dirty) && school.invalid}" placeholder="School Name" required type="text" formControlName="school">
+                     <div class="error" *ngIf="(school.touched || school.dirty) && school.invalid">This field is required</div>
+
+                     </div>
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">Referrer:</div>
+                     <input [ngClass]="{'error': (reffer.touched || reffer.dirty) && reffer.invalid}" placeholder="In any else None" required type="text" formControlName="reffer">
+                     <div class="error" *ngIf="(reffer.touched || reffer.dirty) && reffer.invalid">This field is required</div>
+
+                     </div>
+                  </div>
+                
+                </form>
+                <div style="width: 100%;">
+                  <button *ngIf="i!=0" class="next" style="float: right;" (click)="previous()" >
+                     Previous
+                  </button>
+                  <button  type="submit" class="next" [disabled]="profileForm.invalid" (click)="next()" >
+                     Next
+                  </button>
+                </div>
+                
+            </div>
+         </div>
+         <div *ngIf="i==1" class="tabData">
+            <div class="language">
+               <div class="title">Prefered language</div>
+               <div class="select" style="margin-top: 10px;">
+                  <span (click)="selectedLanguage='English'" class="check" style="border-color: #1dc9b7;">
+                     <span *ngIf="selectedLanguage=='English'" class="box"  style="background-color: #1dc9b7;"></span>
+                  </span>
+                 <strong>
+                    English
+                 </strong>
+
+               </div>
+               <div class="select">
+                  <span (click)="selectedLanguage='Hindi'" class="check">
+                     <span class="box" *ngIf="selectedLanguage=='Hindi'" style="background-color: blue;"></span>
+
+                  </span>
+                 <strong>
+                    Hindi
+                 </strong>
+
+               </div>
+            <!--   <div class="select">
+                  <span (click)="selectedLanguage='Punjabi'" class="check" style="border-color: #fd397a;">
+                     <span class="box" *ngIf="selectedLanguage=='Punjabi'" style="background-color: #fd397a;"></span>
+
+
+                  </span>
+                 <strong>
+                    Punjabi
+                 </strong>
+
+               </div> -->
+      
+            </div>
+            <div style="width: 100%;height: auto;position: absolute;bottom: -18px;">
+               <button *ngIf="i!=0" class="next" style="float: left;background-color: grey;" (click)="previous()" >
+                  Previous
+               </button>
+               <button [disabled]="selectedLanguage == ''" class="next" (click)="next()" >
+                  Next
+               </button>
+             </div>
+         </div>
+         <div  *ngIf="i==2" class="tabData">
+            <div>
+               <div class="title" style="text-align: center;">Important Instructions</div>
+               <div class="intructions" >
+                  <h4 *ngFor="let ins of Instruction">{{ins}}</h4>
+               </div>
+            </div>
+            <div style="width: 100%;height: auto;position: absolute;bottom: -18px;">
+               <button *ngIf="i!=0" class="next" style="float: left;background-color: grey;" (click)="previous()" >
+                  Previous
+               </button>
+               <button [disabled]="submitted" class="next" (click)="next()" >
+                  Submit
+               </button>
+             </div>
+         </div>
+      </div>
+   </div>
+</div>
+<footer class="container-fluid text-center">
+   <p> Copyright @International Humanity Olympiad</p>
+</footer>
+
+</div>

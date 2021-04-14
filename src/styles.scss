@@ -1,0 +1,175 @@
+/* You can add global styles to this file, and also import other style files */
+.timer{
+    /* position: absolute; */
+  /* right: 10px; */
+  /* top: 10px; */
+  width: 120px;
+  height: 53px;
+  /* float: right; */
+  background: #6462C5;
+  border-radius: 10px;
+  padding: 5px;
+  background: #6462C5;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+      margin: 10px auto;
+  text-align: center;
+  color: #FFFFFF;
+}
+img.logo {
+  width: 100px;
+  height: auto;
+}
+.timeleft{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 18px;
+/* identical to box height */
+
+text-align: center;
+
+color: #FFFFFF;
+}
+p.question {
+  font-family: Roboto;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 50px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+img.question{
+margin:10px auto;
+display:block;
+}
+h4.blockq{
+font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #000000;
+}
+.buttongroup1{
+
+display:inline-block;
+
+}
+.buttongroup2{
+
+display:inline-block;
+
+}
+.buttongroup3{
+
+display:inline-block;
+
+}
+.buttongroup4{
+
+display:inline-block;
+
+}
+.buttongroup5{
+
+display:inline-block;
+
+}
+.button{
+width: 31px;
+height: 31px;
+border-radius:50%;
+border:none;
+margin:2px;
+}
+.next{
+width: 31px;
+height: 31px;
+left: 1199px;
+top: 119px;
+background: #FF8E3C;
+}
+.review{
+width: 31px;
+height: 31px;
+left: 1199px;
+top: 119px;
+background: #D9376E;
+}
+.column {
+     width: min-content;
+  margin: 5px 5px;
+  display: inline-block;
+  border: 0.5px solid #000000;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.grey{
+background: rgba(243, 243, 243, 0.73);
+display: flex;
+flex-wrap: wrap;
+align-content: center;
+}
+.column p{
+  padding: 5px;
+  font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 18px;
+color: #000000;
+}
+.footercenter {
+  margin: 10px;
+}
+
+.item {
+  color:white;
+border: none;
+min-width: 6rem;
+padding: 1rem 2rem;
+background-color: #eee;
+cursor: pointer;
+margin: 5px;
+box-shadow: inset 0px 0px 0px -15px rebeccapurple;
+transition: all 300ms ease-out;
+border-radius: 10px;
+}
+
+.reviewitem{
+background: #D9376E;
+}
+.backitem{
+  background: #B2B2B2;
+}
+.saveandnextitem{
+ background: #FF8E3C;
+}
+.submititem{
+  background: #37D995;
+}
+footer{
+  font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+text-align: center;
+margin:30px;
+color: #000000;
+
+}
+
+
+.container-fluid{
+  width: 100vw !important;
+}

@@ -1,0 +1,8 @@
+.logo-container{
+    top: 20px;
+     z-index: 3;
+}
+.logo-container .logo{
+    float: left;
+}
+

@@ -1,0 +1,179 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+.main{
+  height: auto;
+  min-height:70vh;
+  width: 100vw;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif  ;
+  background-image: url(../../assets/wizard.jpg);
+  background-size: cover;
+  font-size: 16px;
+
+}
+.card{
+
+  height: auto;
+  margin: auto;
+  min-height: 75vh;
+
+  background-color: white;
+   border-radius: 15px;
+   box-shadow: (0, 0, 0, 0.15) 0px 0px 15px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 1px;
+  padding: 1px 0;
+}
+.top-nav{
+  height: 36px;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #999999;
+  margin-bottom: 16px;
+
+}
+.tab,.highlight{
+  color: white;
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 10px;
+  height: 100%;
+  font-size: 14px;
+}
+
+input{
+  background-color: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #444444;
+    height: 38px;
+    padding: 6px 16px;
+    width: 100%;
+    font-size: 14px;
+}
+.row{
+  margin: 0;
+}
+.textInput{
+  margin-bottom: 17px;
+}
+.label{
+  margin-bottom: 1px;
+}
+.tab.active{
+  background-color: #FF9500;
+}
+.highlight{
+  position: absolute;
+  background-color: #FF9500;
+  width: 33%;
+  height: 36px;
+  color: white;
+  transition: 0.3s all ease-in-out;
+
+}
+.language{
+  width:100%;
+  height:250px;
+  text-align: center;
+  padding: 50px;
+  padding-top: 0;
+
+  .title{
+
+    font-size: 25px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+  }
+  .select{
+    padding-left: 70px;
+    margin-bottom: 11px;
+    text-align: left;
+  }
+}
+
+.check{
+  text-align: center;
+  cursor: pointer;
+  border: 2px blue solid;
+  width: 18px;
+  display: inline-block;
+  height: 18px;
+  border-radius: 50%;
+  margin-bottom: -3px;
+  /* padding-top: 7px; */
+  margin-right: 23px;
+
+  padding-right: 7px;
+  padding-top: 3px;
+
+  .box{
+    height: 8px;
+    width: 8px;
+    background-color: #1dc9b7;;
+    display: inline-block;
+    border-radius: 50%;
+    margin-bottom: 6px;
+    margin-left: 0px;
+    position: absolute;
+}
+
+  }
+
+  .next{
+    background-color: #FF9500;
+    width: 163px;
+    color: white;
+    height: 29px;
+    border:none;
+    border-radius: 5px;
+float: right;
+
+margin-bottom: 20px;
+margin-top: 50px;
+margin-right: 20px;
+
+
+
+  }
+  .title{
+
+    font-size: 25px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+  }
+.intructions{
+  padding-left:25px;
+  margin-bottom: 60px;
+
+
+}
+input.error{
+  border-color: red;
+}
+div.error{
+  color: red;
+  position: absolute;
+  margin-left: 5px;
+}
+.next:disabled{
+  cursor:not-allowed
+}
+.intructions h4 {
+  font-size: 16px;
+}
+.title{
+  font-size:22px;
+  font-weight: 100;
+}
+footer {
+  width: 100%;
+  overflow:hidden;
+  margin: 0 auto;
+  color: white;
+  font-weight: 900;
+  margin-top: 18px;
+  
+}
+.selected{
+  border-color: #FF9500;
+}

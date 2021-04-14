@@ -1,0 +1,115 @@
+   <!-- <div class="container-fluid text-center">
+      <div class="row content">
+         <div class="col-sm-12 text-center">
+            <p><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+            <h3 class="heading"> Thank You For Attempting The Olympiad!</h3>
+         </div>
+         <div class="col-sm-3 text-center sidenav">
+            <p class="name">{{data.name}}</p>
+            <div class="res-circle">
+               <div class="circle-txt">{{data.score}}%</div>
+            </div>
+            <p class="title">Score</p>
+         </div>
+         <div class="col-sm-1 text-center sidenav">
+            <div class="space"></div>
+            <div class="res-circle1">
+               <div class="circle-txt1">{{data.correct}}</div>
+            </div>
+            <p class="title1">Correct</p>
+         </div>
+         <div class="col-sm-1 text-center sidenav">
+            <div class="space"></div>
+            <div class="res-circle2">
+               <div class="circle-txt1">{{data.incorrect}}</div>
+            </div>
+            <p class="title1">Incorrect</p>
+         </div>
+         <div class="col-sm-1 text-center sidenav">
+            <div class="space"></div>
+            <div class="res-circle3">
+               <div class="circle-txt1">{{data.unanswered}}</div>
+            </div>
+            <p class="title1">Unanswered</p>
+         </div>
+         <div class="col-sm-6 sidenav">
+            <img class="text-center" width="450px" [src]="data.certificate_url" >
+            
+            <div class="sorry" *ngIf="(data.score) < 40">
+            <h4  >We are sorry To Inform You that Your score is below the minimum criteria to get a certificate</h4>
+
+            </div>
+            <div *ngIf="(data.score) >= 40" class="text-left">
+               <a href="javascript:void(0);" (click)="downloadImage()" class="btn btn-primary download">Download Certificate</a>
+            </div>
+         </div>
+         <div class="col-sm-12">
+            <ul class="social">
+               <li class="caption text-left">Share On:</li>
+               <li><a href="" ><img src="../../assets/quiz/images/facebook.png"></a></li>
+               <li> <a href=""><img src="../../assets/quiz/images/whatsapp.png"></a></li>
+               <li><button (click)="attempt()" class="btn btn-primary download">Attempt Again</button></li>
+            </ul>
+         </div>
+      </div>
+   </div> -->
+ <ngx-spinner></ngx-spinner>
+ <div class="container-fluid text-center">
+   <div class="row content">
+      <div class="col-sm-12 text-center">
+         <p><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+         <h3 class="heading"> Thank You For Attempting The Olympiad!</h3>
+      </div>
+      <div class="col-sm-3 text-center sidenav">
+         <p class="name">{{data.name}}</p>
+         <div class="res-circle">
+            <div class="circle-txt">{{data.score}}%</div>
+         </div>
+         <p class="title">Score</p>
+      </div>
+      <div class="col-sm-1 text-center sidenav">
+         <div class="space"></div>
+         <div class="res-circle1">
+            <div class="circle-txt1">{{data.correct}}</div>
+         </div>
+         <p class="title1">Correct</p>
+      </div>
+      <div class="col-sm-1 text-center sidenav">
+         <div class="space"></div>
+         <div class="res-circle2">
+            <div class="circle-txt1">{{data.incorrect}}</div>
+         </div>
+         <p class="title1">Incorrect</p>
+      </div>
+      <div class="col-sm-1 text-center sidenav">
+         <div class="space"></div>
+         <div class="res-circle3">
+            <div class="circle-txt1">{{data.unanswered}}</div>
+         </div>
+         <p class="title1">Unanswered</p>
+      </div>
+      <div class="col-sm-6 sidenav">
+         <img class="text-center" width="450px" [src]="data.certificate_url" >
+          
+         <div class="sorry" *ngIf="(data.score) < 40">
+         <h4  >We are sorry To Inform You that Your score is below the minimum criteria to get a certificate</h4>
+
+         </div>
+         <div class="text-center">
+          
+               <button *ngIf="(data.score) >= 40" href="javascript:void(0);" (click)="downloadImage()" class="btn btn-primary download">Download Certificate</button>
+            
+            <button (click)="attempt()" class="btn btn-primary download">Attempt Again</button>
+         </div>
+      </div>
+       <div class="floating-social-buttons">
+
+<a href="#" class="social-button"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social-button"><i class="fab fa-whatsapp"></i></a>
+ <p class="sharenow">Share Now</p>
+</div>
+   </div>
+</div>
+<footer class="container-fluid text-center">
+   <p> Copyright @International Humanity Olympiad</p>
+</footer>

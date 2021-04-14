@@ -1,0 +1,126 @@
+<!-- <div class="container-fluid text-center">
+       <div class="timer">
+                  <p>Time left</p>
+                  {{clock}}
+               </div>
+    <div class="row">
+       <div class="col-sm-2 sidenav">
+         <p><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+
+       
+           
+
+         
+       </div>
+       <div class="col-lg-8 col-12">
+         <div class="question">
+            <img  [src]="current['qq'].qurl" class="question-img" >
+            <p class="question">Q {{i}}:{{current['qq'].q}}</p>
+
+
+         </div>
+         <hr>
+         <div class="options">
+            <div class="" >
+
+               <div [ngClass]="{'selected' : answer[current['qq'].qid].includes(op) }" class="op column" (click)="answerQuestion(current['qq'].qid,op)" *ngFor="let op of keys;index as i">
+                  <div  class="option"> 
+                     <div>
+                     <img  [src]="current[op].url" class="question-img" >
+                        <p  class="optionButton">Option {{i+1}}: {{current[op].o}}</p>
+   
+                     </div>
+                    
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+         <div  style="justify-content:center" class="row">
+            <button (click)="previous()" class="item backitem">
+               Previous
+            </button> 
+            <button  (click)="toogleReview()" class="item reviewitem">
+               Mark For Review
+            </button>
+            <button (click)="next()" class="item saveandnextitem">
+               Next
+            </button>
+            <button (click)="submit()"  class="item submititem">
+               Submit
+            </button>
+         </div>
+         
+    </div>
+    <div class="col" >
+      <div class="grid row">
+         <span (click)="jump(in+1)" [ngClass]="{'review' : review[in] , 'selected' : this.gridAnswer[in+1],'current':i==in }" *ngFor="let g of this.questionObject;index as in" >{{in+1}}</span>
+      </div>
+
+   </div>
+    
+    </div>
+
+ </div> -->
+
+
+ <ngx-spinner></ngx-spinner>
+ <div style="position: relative;padding: 20px;overflow-x: hidden;" class="container-fluid text-center">
+   <div class="row content">
+      <div class="col-sm-2 text-left">
+         <p><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+      </div>
+      <div class="col-sm-12 col-md-8 text-center activequestion" id="1">
+         <input type="hidden" value="1" name="qid">
+         <img class="question" [src]="current['qq'].qurl" >
+         <p class="question">Q {{i}}:{{current['qq'].q}}</p>
+         <hr>
+         <label [ngClass]="{'selected' : answer[current['qq'].qid].includes(op) }" (click)="answerQuestion(current['qq'].qid,op)" *ngFor="let op of keys;index as i" class="column" id="checkbox">
+            <!-- <input type="checkbox" value="c1,1" class="checkbox" name="checkbox"> -->
+            <img class="optionimage"  [src]="current[op].url" >
+            <p>{{current[op].o}}</p>
+         </label>
+         <div style="text-align:center" class="row footercenter">
+            
+               <button (click)="toogleReview()" class="item reviewitem">Review Later</button>
+               <button (click)="previous()" class="item backitem">Back</button>
+               <button (click)="next()" class="item saveandnextitem">Save & Next</button>
+               <button type="button" data-toggle="modal" [disabled]="submitted" data-target="#exampleModal" class="item submititem">Submit Quiz</button>
+         </div>
+      </div>
+      <div class="col-sm-12 col-md-2  sidenav">
+         <div class="well">
+            <div class="timer">
+               Time Left 
+               <p class="timeleft">{{clock}}</p>
+            </div>
+         </div>
+         <div class="well">
+            <h4 class="blockq">Questions : </h4>
+            <div class="buttongroup1">
+               <button (click)="jump(in+1)" [ngClass]="{'review' : review[in] , 'next' : this.gridAnswer[in+1],'current':i==in }" *ngFor="let g of this.questionObject;index as in"class="button btn1">{{in+1}}</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Do You want to submit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" >No</button>
+            <button type="button"  (click)="submit()" data-dismiss="modal" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+      <p> Copyright @International Humanity Olympiad</p>
+   </footer>
+</div>
