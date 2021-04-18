@@ -329,3 +329,57 @@ footer{
 	margin: 0;
 	position: unset;
 }
+
+.modal-dialog{
+	max-width: unset;
+	margin: 46px 8%;
+
+}
+.modal-content{
+    width: 85vw;
+    height: 84vh;
+}
+@media only screen and (max-width:500px){
+	.modal-content{
+		width:98vw;
+		height:98vh;
+		margin: auto;
+	}
+	#exampleModal{
+		padding:0
+	}
+	.modal-dialog{
+		margin:0
+	}
+}
+.checkbox{
+width: 18px;
+    height: 18px;
+    border: 2px solid blue;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 50%;
+	margin-bottom: -4px;
+	.box{
+		width: 10px;
+    	height: 10px;
+		border-radius: 50%;
+		background-color:blue;
+		margin: auto;
+		margin-top: 2px;
+
+
+	}
+}
+.option{
+	margin-top: 20px;
+}
+option .div{
+	margin: 4px 3px;
+}
+button:disabled{
+	cursor: not-allowed;
+}
+.close {display: none;}
+

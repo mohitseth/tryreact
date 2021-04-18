@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener,Renderer2} from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 // service
 import { ApiService } from '../../providers/api.service';
 import { NgxSpinnerService } from "ngx-spinner";
+
 
 
 @Component({
@@ -12,9 +13,18 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
+  @HostListener('window:beforeunload')
+  saveData =function(){
+    console.log('reload');
+    sessionStorage.setItem('remainingTime',this.time.toString());
+    sessionStorage.setItem('answer',JSON.stringify(this.answer));
+    sessionStorage.setItem('i',this.i);
+
+  }
+
 
   public qjson = []
-  constructor(public api: ApiService,public router: Router,public spinner: NgxSpinnerService) { }
+  constructor(public api: ApiService,public router: Router,public spinner: NgxSpinnerService,public renderer:Renderer2) { }
   public current = {}
   public grid = []
   public questionObject =[]
@@ -23,17 +33,59 @@ export class QuizComponent implements OnInit {
   public review = {}
   public answer = {}
   public time = 15*60;
+  public flag = false;
 
   ngOnInit(): void {
-    if([null,'null',"",'undefined',undefined].includes(localStorage.getItem('userId'))){
+    if(false && [null,'null',"",'undefined',undefined].includes(sessionStorage.getItem('userId'))){
         this.router.navigate(['/home'])
     }
     else{
+      if(![null,undefined,'null','undefined'].includes((sessionStorage.getItem('remainingTime')))){
+        this.qjson = JSON.parse(sessionStorage.getItem('quizArray'))
+        this.time  = parseInt(sessionStorage.getItem('remainingTime'));
+        var ans = {...JSON.parse(sessionStorage.getItem('answer'))}
+        console.log(ans)
+        this.i = parseInt(sessionStorage.getItem('i'));
+        for(var a in ans){
+          if(ans[a].length > 0){
+            var index =0;
+        for(var q of this.qjson){
+          var id = Object.keys(q)[0]
+          if(parseInt(id) == parseInt(a)){
+            console.log(id)
+            break;
+          }
+          index++;
+          }
+          this.answer[a] = ans[a];
+          this.flag= true
+          if(ans[a] != undefined && ans[a].length > 0) this.gridAnswer[index+1]  = true;
+          }
+          
+        }
+        for(var i=0;i<25;i++){
+          if(this.answer[i] == undefined){
+            this.answer[i] = [] 
+          }
+        }
+        console.log('updated from local',this.answer,this.time);
+      }
         this.fun();
         this.startTimer();
+
     }
+
    
   }
+  first(){
+    try {
+      const errorField =  this.renderer.selectRootElement('#que');
+        errorField.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) {
+
+}
+}
+  
   startTimer = function(){
      var int =  setInterval(() => {
           this.time --;
@@ -62,12 +114,13 @@ export class QuizComponent implements OnInit {
 
 
   fun =  function(){
-      this.qjson = JSON.parse(localStorage.getItem('quizArray'))
+      this.qjson = JSON.parse(sessionStorage.getItem('quizArray'))
     for(var i=0;i<this.qjson.length;i++) {
       var element = this.qjson[i];
       var id = Object.keys(element);
       var value : Object = Object.values(element)
-      this.answer[i+1] = []
+      if(!this.flag)
+        this.answer[i+1] = []
       this.questionObject.push(value[0])
     };
     
@@ -78,19 +131,26 @@ export class QuizComponent implements OnInit {
   }
   public clock = "24:00"
   next = function(){
+    this.first()
     this.i++;
     this.renderQuestion();
   }
   previous = function(){
+    this.first()
+
       this.i--;
       this.renderQuestion();
 
   }
   jump = function(i){
+    this.first()
+
     this.i = i;
     this.renderQuestion();
   }
   toogleReview = function(){
+      this.first()
+
       var i = this.i-1
       if(this.review[i] == undefined){
         this.review[i]= true;
@@ -148,8 +208,8 @@ export class QuizComponent implements OnInit {
       }
       console.log(arr)
       var body = {
-          user_id: localStorage.getItem('userId'),
-          language:localStorage.getItem('language'),
+          user_id: sessionStorage.getItem('userId'),
+          language:sessionStorage.getItem('language'),
           timeTaken:this.secToTime(15*60-this.time),
           answer :arr
       }
@@ -171,7 +231,7 @@ export class QuizComponent implements OnInit {
         if(!re.error){
         this.spinner.hide();
 
-            localStorage.setItem('result',JSON.stringify(re))
+            sessionStorage.setItem('result',JSON.stringify(re))
             this.router.navigate(['/result'])        
 
         }

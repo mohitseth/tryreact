@@ -1,68 +1,3 @@
-<!-- <div class="container-fluid text-center">
-       <div class="timer">
-                  <p>Time left</p>
-                  {{clock}}
-               </div>
-    <div class="row">
-       <div class="col-sm-2 sidenav">
-         <p><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
-
-       
-           
-
-         
-       </div>
-       <div class="col-lg-8 col-12">
-         <div class="question">
-            <img  [src]="current['qq'].qurl" class="question-img" >
-            <p class="question">Q {{i}}:{{current['qq'].q}}</p>
-
-
-         </div>
-         <hr>
-         <div class="options">
-            <div class="" >
-
-               <div [ngClass]="{'selected' : answer[current['qq'].qid].includes(op) }" class="op column" (click)="answerQuestion(current['qq'].qid,op)" *ngFor="let op of keys;index as i">
-                  <div  class="option"> 
-                     <div>
-                     <img  [src]="current[op].url" class="question-img" >
-                        <p  class="optionButton">Option {{i+1}}: {{current[op].o}}</p>
-   
-                     </div>
-                    
-                  </div>
-               </div>
-               
-            </div>
-         </div>
-         <div  style="justify-content:center" class="row">
-            <button (click)="previous()" class="item backitem">
-               Previous
-            </button> 
-            <button  (click)="toogleReview()" class="item reviewitem">
-               Mark For Review
-            </button>
-            <button (click)="next()" class="item saveandnextitem">
-               Next
-            </button>
-            <button (click)="submit()"  class="item submititem">
-               Submit
-            </button>
-         </div>
-         
-    </div>
-    <div class="col" >
-      <div class="grid row">
-         <span (click)="jump(in+1)" [ngClass]="{'review' : review[in] , 'selected' : this.gridAnswer[in+1],'current':i==in }" *ngFor="let g of this.questionObject;index as in" >{{in+1}}</span>
-      </div>
-
-   </div>
-    
-    </div>
-
- </div> -->
-
 
  <ngx-spinner></ngx-spinner>
  <div style="position: relative;padding: 20px;overflow-x: hidden;" class="container-fluid text-center">
@@ -72,7 +7,7 @@
       </div>
       <div class="col-sm-12 col-md-8 text-center activequestion" id="1">
          <input type="hidden" value="1" name="qid">
-         <img class="question" [src]="current['qq'].qurl" >
+         <img id="que" class="question" [src]="current['qq'].qurl" >
          <p class="question">Q {{i}}:{{current['qq'].q}}</p>
          <hr>
          <label [ngClass]="{'selected' : answer[current['qq'].qid].includes(op) }" (click)="answerQuestion(current['qq'].qid,op)" *ngFor="let op of keys;index as i" class="column" id="checkbox">
@@ -98,7 +33,7 @@
          <div class="well">
             <h4 class="blockq">Questions : </h4>
             <div class="buttongroup1">
-               <button (click)="jump(in+1)" [ngClass]="{'review' : review[in] , 'next' : this.gridAnswer[in+1],'current':i==in }" *ngFor="let g of this.questionObject;index as in"class="button btn1">{{in+1}}</button>
+               <button (click)="jump(in+1)" [ngClass]="{'review' : review[in] , 'next' : this.gridAnswer[in+1],'current':i==in+1 }" *ngFor="let g of this.questionObject;index as in"class="button btn1">{{in+1}}</button>
             </div>
          </div>
       </div>
@@ -107,7 +42,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Do You want to submit</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Do you want to submit ?</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -121,6 +56,6 @@
     </div>
 
     <footer class="container-fluid text-center">
-      <p> Copyright @International Humanity Olympiad</p>
+      <p> Copyright @ 7th International Humanity Olympiad</p>
    </footer>
 </div>

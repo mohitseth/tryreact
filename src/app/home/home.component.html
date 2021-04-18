@@ -6,7 +6,7 @@
          <p style="text-align:center;" ><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
       </div>
    </div>
-   <div class="card col-xl-6 col-lg-6 col-sm-8 col-10 ">
+   <div class="card col-xl-6 col-lg-6 col-sm-8 col-11 ">
       
       <div class="top-nav">
          <div class="highlight" >
@@ -44,7 +44,7 @@
 
                         
                         
-                        <input [ngClass]="{'error': (phone.touched || phone.dirty) && phone.invalid}"  required type="text" placeholder="10 Digit Mobile No" formControlName="phone">
+                        <input type="number" (keypress)="keyPressNumbersDecimal($event)" [ngClass]="{'error': (phone.touched || phone.dirty) && phone.invalid}"  required type="text" placeholder="10 Digit Mobile No" formControlName="phone">
                      <div class="error" *ngIf="(phone.touched || phone.dirty) && phone.invalid">This field is required</div>
 
                      </div>    <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
@@ -113,10 +113,7 @@
                   </div>
                 
                 </form>
-                <div style="width: 100%;">
-                  <button *ngIf="i!=0" class="next" style="float: right;" (click)="previous()" >
-                     Previous
-                  </button>
+                <div style="width: 100%;text-align: center;">
                   <button  type="submit" class="next" [disabled]="profileForm.invalid" (click)="next()" >
                      Next
                   </button>
@@ -128,6 +125,8 @@
             <div class="language">
                <div class="title">Prefered language</div>
                <div class="select" style="margin-top: 10px;">
+                  <img (click)="selectedLanguage='English'" src="../../assets/img/english.jpg">
+                  <br>
                   <span (click)="selectedLanguage='English'" class="check" style="border-color: #1dc9b7;">
                      <span *ngIf="selectedLanguage=='English'" class="box"  style="background-color: #1dc9b7;"></span>
                   </span>
@@ -137,6 +136,8 @@
 
                </div>
                <div class="select">
+                  <img (click)="selectedLanguage='Hindi'" style="width:60%" src="../../assets/img/hindi.jpg">
+                  <br>
                   <span (click)="selectedLanguage='Hindi'" class="check">
                      <span class="box" *ngIf="selectedLanguage=='Hindi'" style="background-color: blue;"></span>
 
@@ -159,28 +160,28 @@
                </div> -->
       
             </div>
-            <div style="width: 100%;height: auto;position: absolute;bottom: -18px;">
+         <div style="" class="cl1">
                <button *ngIf="i!=0" class="next" style="float: left;background-color: grey;" (click)="previous()" >
                   Previous
                </button>
-               <button [disabled]="selectedLanguage == ''" class="next" (click)="next()" >
+               <button [disabled]="selectedLanguage == ''" style="float: right;" class="next" (click)="next()" >
                   Next
                </button>
              </div>
          </div>
          <div  *ngIf="i==2" class="tabData">
-            <div>
+            <div style="margin-bottom: 105px;">
                <div class="title" style="text-align: center;">Important Instructions</div>
                <div class="intructions" >
                   <h4 *ngFor="let ins of Instruction">{{ins}}</h4>
                </div>
             </div>
-            <div style="width: 100%;height: auto;position: absolute;bottom: -18px;">
+         <div style="" class="cl2">
                <button *ngIf="i!=0" class="next" style="float: left;background-color: grey;" (click)="previous()" >
                   Previous
                </button>
-               <button [disabled]="submitted" class="next" (click)="next()" >
-                  Submit
+               <button [disabled]="submitted" style="float: right;" class="next" (click)="next()" >
+                  Start
                </button>
              </div>
          </div>
@@ -188,7 +189,7 @@
    </div>
 </div>
 <footer class="container-fluid text-center">
-   <p> Copyright @International Humanity Olympiad</p>
+   <p> Copyright @ 7th International Humanity Olympiad</p>
 </footer>
 
 </div>

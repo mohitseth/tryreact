@@ -22,16 +22,16 @@ export class HomeComponent implements OnInit {
   Countries:Object =csc.getAllCountries(); 
   City;
   Class:Array<String> = ["5th","6th","7th","8th","9th","10th","11th","12th",'Individual']
-  State:IState;
+  State;
   submit = false;
   profileForm = new FormGroup({
     fName: new FormControl('',Validators.required),
-    phone: new FormControl('',[Validators.required,Validators.minLength(10)]),
+    phone: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10),  Validators.pattern("^[0-9]*$"),  ]),
     school:new FormControl('',Validators.required),
-    country:new FormControl('',Validators.required),
+    country:new FormControl('IN',Validators.required),
     email:new FormControl('',[Validators.required,Validators.email]),
     state:new FormControl('',Validators.required),
-    class:new FormControl('',Validators.required),
+    class:new FormControl('Individual',Validators.required),
     city:new FormControl('',Validators.required),
     schoolCode:new FormControl('',Validators.required),
     reffer:new FormControl('',Validators.required),
@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit {
   }  get reffer():FormControl{
     return this.profileForm.get('reffer') as FormControl;
   }
+  
   selectedTab:string = '';
   selectedLanguage:string=''
   tabs= ['ABOUT','LANGUAGE','INSTRUCTION']
@@ -76,6 +77,38 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fun();
+    setInterval(() =>{
+      if(this.class.value == 'Individual'){
+        this.profileForm.get('schoolCode').disable();
+        this.profileForm.get('school').disable();
+
+
+      }
+      else{
+        this.profileForm.get('schoolCode').enable();
+        this.profileForm.get('school').enable();
+
+      }
+    })
+    setTimeout(() => {
+      this.State = csc.getStatesOfCountry('IN')
+
+    })
+
+  }
+  keyPressNumbersDecimal(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    console.log(charCode)
+    if (charCode > 31
+      && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
+
+  isDisabled():boolean {
+    return true;
   }
 
   GetAPI(){
@@ -145,9 +178,9 @@ export class HomeComponent implements OnInit {
     .then(re => {
       console.log(re);
       if(!re.error){
-        localStorage.setItem('quizArray',JSON.stringify(re.qjson))
-        localStorage.setItem('userId',re.user_id)
-        localStorage.setItem('language',re.language)
+        sessionStorage.setItem('quizArray',JSON.stringify(re.qjson))
+        sessionStorage.setItem('userId',re.user_id)
+        sessionStorage.setItem('language',re.language)
         this.spinner.hide();
         this.route.navigate(['/quiz'])        
         
@@ -184,9 +217,7 @@ export class HomeComponent implements OnInit {
     console.log(obj,e.target.value,s)
     this.profileForm.patchValue(obj)
     if(t == 'country'){
-
       this.State = csc.getStatesOfCountry(s)
-      console.log(this.state)
     }
     if(t == 'state'){
       this.City = csc.getCitiesOfState(this.profileForm.get('country').value,s)
