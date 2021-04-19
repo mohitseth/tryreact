@@ -214,7 +214,7 @@ h4.blockq {
 	font-style: normal;
 	font-weight: normal;
 	font-size: 22px;
-	line-height: 32px;
+	line-height: 18px;
 	color: #000000;
 }
 
@@ -377,8 +377,8 @@ img {
 @media only screen and (max-width:750px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 	}
 	.optionimage {
 		width: 300px;
@@ -388,16 +388,16 @@ img {
 @media only screen and (max-width: 600px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 	}
 }
 
 @media only screen and (max-width: 415px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 	}
 	.button {
 	width: 40px;
@@ -408,16 +408,16 @@ img {
 @media only screen and (max-width: 412px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 	}
 }
 
 @media only screen and (max-width: 360px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 	}
 	.button {
 	width: 40px;
@@ -428,8 +428,8 @@ img {
 @media only screen and (max-width: 321px) {
 	.timer {
 		top: 50px;
-    right: 10px;
-    position: fixed;
+		right: 10px;
+		position: fixed;
 		width: 90px;
 		padding: 5px;
 		margin: 5px;
@@ -438,3 +438,6 @@ img {
 .current{
 	border:2px solid blue;
 }
+.review{
+	background: #D9376E;
+	}

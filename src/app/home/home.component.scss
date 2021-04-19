@@ -223,3 +223,11 @@ footer {
     }
 	}
 }
+@media only screen and (max-width:377px) {
+.next {
+    padding: 7px 40px;
+}
+.language .select {
+    width: 100%;
+}
+}

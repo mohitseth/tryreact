@@ -50,6 +50,19 @@ export class ResultComponent implements OnInit {
 
     this.data = JSON.parse(sessionStorage.getItem('result'))
     this.data.score = parseInt(this.data.score.toString());
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('answer');
+	sessionStorage.removeItem('i');
+	sessionStorage.removeItem('remainingTime');
+	
+	
+      window.scrollTo({top: 0});
+
+			
+
+	
+	
+
   }
 
   }

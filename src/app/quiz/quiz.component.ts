@@ -38,7 +38,7 @@ export class QuizComponent implements OnInit {
   public flag = false;
 
   ngOnInit(): void {
-    if(false && [null,'null',"",'undefined',undefined].includes(sessionStorage.getItem('userId'))){
+    if([null,'null',"",'undefined',undefined].includes(sessionStorage.getItem('userId'))){
         this.router.navigate(['/home'])
     }
     else{
@@ -88,6 +88,7 @@ export class QuizComponent implements OnInit {
     try {
       const errorField =  this.renderer.selectRootElement('#que');
         errorField.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			
     } catch (err) {
 
 }
@@ -136,7 +137,7 @@ export class QuizComponent implements OnInit {
     
   
   }
-  public clock = "24:00"
+  public clock = "15:00"
   next = function(){
     this.first()
     this.i++;
@@ -156,7 +157,7 @@ export class QuizComponent implements OnInit {
     this.renderQuestion();
   }
   toogleReview = function(){
-      this.first()
+       this.first()
 
       var i = this.i-1
       if(this.review[i] == undefined){
@@ -166,6 +167,8 @@ export class QuizComponent implements OnInit {
         this.review[i]= !this.review[i];
 
       }
+	  this.i++;
+    this.renderQuestion();
       console.log(this.review)
   }
   private gridAnswer = {}
