@@ -169,7 +169,7 @@ export class HomeComponent implements OnInit {
 
     }
     console.log(body)
-    fetch('https://save2rent.com/app2021/api/public',{
+    fetch('https://save2rent.com/app2021/api/public/login',{
       method:'POST',
       body:formData,
 
