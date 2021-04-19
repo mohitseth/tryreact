@@ -27,46 +27,57 @@
             <div class="row">
                <form [formGroup]="profileForm">
                   <div class="row">
+				  
                      <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
                      <div class="label">Full Name:</div>
                      <input required [ngClass]="{'error': (fName.touched || fName.dirty) && fName.invalid}" type="text" placeholder="Please Enter Your Name" formControlName="fName">
                      <div class="error" *ngIf="(fName.touched || fName.dirty) && fName.invalid">This field is required</div>
                      </div>
-                  
+                   
                      <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+                     <div class="label">Phone:</div> 
+                        <input type="number" (keypress)="keyPressNumbersDecimal($event)" [ngClass]="{'error': (phone.touched || phone.dirty) && phone.invalid}"  required type="text" placeholder="10 Digit Mobile No" formControlName="phone">
+                     <div class="error" *ngIf="(phone.touched || phone.dirty) && phone.invalid">This field is required</div>
+                     </div>
+
+					 <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">                        
+                     <div class="label">Email:</div>
+                        <input  required [ngClass]="{'error': (email.touched || email.dirty) && email.invalid}" placeholder="Please Enter Your Email" type="text" formControlName="email">
+                     <div class="error" *ngIf="(email.touched || email.dirty) && email.invalid">This field is required</div>
+                     </div>
+					 
+					  <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">   
+						<div class="label">Class:</div>
+                     <select class="custom-select" (change)="change($event,'class')" formControlName="class">
+                        <option value="" disabled>Choose your Class</option>
+                        <option *ngFor="let class of Class" value="{{class}}">{{class}}</option>
+                     </select>                      
+                     <div class="error" *ngIf="profileForm.value.class == '' && submit">This field is required</div>
+                     </div>
+					 
+					 <div class=" col-lg-6 col-sm-6 col-xs-6  textInput" style="display:none">
+                     <div class="label">School/College Name:</div>
+                     <input  [ngClass]="{'error': (school.touched || school.dirty) && school.invalid}" placeholder="School Name" required type="text" formControlName="school">
+                     <div class="error" *ngIf="(school.touched || school.dirty) && school.invalid">This field is required</div>
+                     </div>
+					 
+					 
+					<div class=" col-lg-6 col-sm-6 col-xs-6  textInput" style="display:none">
                      <div class="label">School/College Code:</div>
                      <input  required [ngClass]="{'error': (schoolCode.touched || schoolCode.dirty) && schoolCode.invalid}" type="text" placeholder="School Code" formControlName="schoolCode">
                      <div class="error" *ngIf="(schoolCode.touched || schoolCode.dirty) && schoolCode.invalid">This field is required</div>
-                     
                      </div>
-                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
-                     <div class="label">Phone:</div>
-
-                        
-                        
-                        <input type="number" (keypress)="keyPressNumbersDecimal($event)" [ngClass]="{'error': (phone.touched || phone.dirty) && phone.invalid}"  required type="text" placeholder="10 Digit Mobile No" formControlName="phone">
-                     <div class="error" *ngIf="(phone.touched || phone.dirty) && phone.invalid">This field is required</div>
-
-                     </div>    <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
+					 
+					 <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
                      <div class="label">Country:</div>
-                        
-
                      <select class="custom-select" (change)="change($event,'country')" formControlName="country">
                         <option value="" disabled>Choose your Country</option>
                         <option *ngFor="let country of Countries" value="{{country.isoCode}}">{{country.name}}</option>
                      </select>                    
                       <div class="error" *ngIf="profileForm.value.country == '' && submit">This field is required</div>
-
-                     </div>    <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
-                        
-                     <div class="label">Email:</div>
-
-                        <input  required [ngClass]="{'error': (email.touched || email.dirty) && email.invalid}" placeholder="Please Enter Your Email" type="text" formControlName="email">
-                     <div class="error" *ngIf="(email.touched || email.dirty) && email.invalid">This field is required</div>
-
-                     </div>
-                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
-                        
+                     </div>    
+					 
+                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">                        
                      <div class="label">State:</div>
 
                      <select class="custom-select" (change)="change($event,'state')" formControlName="state">
@@ -76,17 +87,7 @@
                      <div class="error" *ngIf="profileForm.value.state == '' && submit">This field is required</div>
 
                      </div>
-                     <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
-                        
-                     <div class="label">Class:</div>
-
-                     <select class="custom-select" (change)="change($event,'class')" formControlName="class">
-                        <option value="" disabled>Choose your Class</option>
-                        <option *ngFor="let class of Class" value="{{class}}">{{class}}</option>
-                     </select>                      
-                     <div class="error" *ngIf="profileForm.value.class == '' && submit">This field is required</div>
-
-                     </div>
+                    
                      <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
                      <div class="label">City:</div>
                         
@@ -97,13 +98,7 @@
                      </select>                    
                       <div class="error" *ngIf="profileForm.value.city == '' && submit">This field is required</div>
 
-                     </div> <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
-                        
-                     <div class="label">School/College Name:</div>
-                     <input  [ngClass]="{'error': (school.touched || school.dirty) && school.invalid}" placeholder="School Name" required type="text" formControlName="school">
-                     <div class="error" *ngIf="(school.touched || school.dirty) && school.invalid">This field is required</div>
-
-                     </div>
+                     </div> 
                      <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
                      <div class="label">Referrer:</div>
                      <input [ngClass]="{'error': (reffer.touched || reffer.dirty) && reffer.invalid}" placeholder="In any else None" required type="text" formControlName="reffer">

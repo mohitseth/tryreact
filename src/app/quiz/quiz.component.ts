@@ -18,6 +18,8 @@ export class QuizComponent implements OnInit {
     console.log('reload');
     sessionStorage.setItem('remainingTime',this.time.toString());
     sessionStorage.setItem('answer',JSON.stringify(this.answer));
+    sessionStorage.setItem('review',JSON.stringify(this.review));
+
     sessionStorage.setItem('i',this.i);
 
   }
@@ -44,7 +46,8 @@ export class QuizComponent implements OnInit {
         this.qjson = JSON.parse(sessionStorage.getItem('quizArray'))
         this.time  = parseInt(sessionStorage.getItem('remainingTime'));
         var ans = {...JSON.parse(sessionStorage.getItem('answer'))}
-        console.log(ans)
+        var review = JSON.parse(sessionStorage.getItem('review'))
+        this.review = review
         this.i = parseInt(sessionStorage.getItem('i'));
         for(var a in ans){
           if(ans[a].length > 0){
@@ -59,7 +62,11 @@ export class QuizComponent implements OnInit {
           }
           this.answer[a] = ans[a];
           this.flag= true
-          if(ans[a] != undefined && ans[a].length > 0) this.gridAnswer[index+1]  = true;
+          
+          if(ans[a] != undefined && ans[a].length > 0){
+            this.gridAnswer[index+1]  = true;
+       
+          } 
           }
           
         }
