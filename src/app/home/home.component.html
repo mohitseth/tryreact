@@ -47,7 +47,7 @@
                      </div>
 					 
 					  <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">   
-						<div class="label">Class:</div>
+						<div class="label">Category:</div>
                      <select class="custom-select" (change)="change($event,'class')" formControlName="class">
                         <option value="" disabled>Choose your Class</option>
                         <option *ngFor="let class of Class" value="{{class}}">{{class}}</option>
@@ -101,7 +101,7 @@
                      </div> 
                      <div class=" col-lg-6 col-sm-6 col-xs-6  textInput">
                      <div class="label">Referrer:</div>
-                     <input [ngClass]="{'error': (reffer.touched || reffer.dirty) && reffer.invalid}" placeholder="In any else None" required type="text" formControlName="reffer">
+                     <input [ngClass]="{'error': (reffer.touched || reffer.dirty) && reffer.invalid}" placeholder="If any else None" required type="text" formControlName="reffer">
                      <div class="error" *ngIf="(reffer.touched || reffer.dirty) && reffer.invalid">This field is required</div>
 
                      </div>
