@@ -127,7 +127,7 @@
          </div>
          <div class="text-center">
           
-               <button *ngIf="(data.score) >= 40" href="javascript:void(0);" (click)="downloadImage()" class="btn btn-primary download">Download Certificate</button>
+               <a *ngIf="(data.score) >= 40" href="{{data.certificate_url}}" target="_blank" class="btn btn-primary download">Download Certificate</a>
             
             <button (click)="attempt()" class="btn btn-primary download">Attempt Again</button>
          </div>
