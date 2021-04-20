@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     phone: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10),  Validators.pattern("^[0-9]*$"),  ]),
     school:new FormControl('',Validators.required),
     country:new FormControl('IN',Validators.required),
-    email:new FormControl('',[Validators.required,Validators.email]),
+    email:new FormControl('',Validators.required),
     state:new FormControl('',Validators.required),
     class:new FormControl('Individual',Validators.required),
     city:new FormControl('',Validators.required),
