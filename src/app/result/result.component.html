@@ -122,12 +122,12 @@
          <img class="text-center" width="450px" [src]="data.certificate_url" >
           
          <div class="sorry" *ngIf="(data.score) < 40">
-         <h4  >We are sorry To Inform You that Your score is below the minimum criteria to get a certificate</h4>
+         <h4  >We are sorry to inform you that your score is below the minimum criteria to get a certificate</h4>
 
          </div>
          <div class="text-center">
           
-               <button *ngIf="(data.score) >= 40" href="javascript:void(0);" (click)="downloadImage()" class="btn btn-primary download">Download Certificate</button>
+               <a *ngIf="(data.score) >= 40" href="{{data.certificate_url}}" target="_blank" class="btn btn-primary download">Download Certificate</a>
             
             <button (click)="attempt()" class="btn btn-primary download">Attempt Again</button>
          </div>
