@@ -11,6 +11,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReportComponent } from './report/report.component';
 
 
 
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ResultComponent,
     HomeComponent,
     QuizComponent,
+    ReportComponent,
 
   ],
   imports: [

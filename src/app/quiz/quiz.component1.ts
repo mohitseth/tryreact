@@ -46,7 +46,6 @@ export class QuizComponent implements OnInit {
         this.qjson = JSON.parse(sessionStorage.getItem('quizArray'))
         this.time  = parseInt(sessionStorage.getItem('remainingTime'));
         var ans = {...JSON.parse(sessionStorage.getItem('answer'))}
-        this.answer = ans
         var review = JSON.parse(sessionStorage.getItem('review'))
         this.review = review
         this.i = parseInt(sessionStorage.getItem('i'));
@@ -63,15 +62,19 @@ export class QuizComponent implements OnInit {
           }
           this.answer[a] = ans[a];
           this.flag= true
-
+          
           if(ans[a] != undefined && ans[a].length > 0){
             this.gridAnswer[index+1]  = true;
-
+       
+          } 
           }
-          }
-
+          
         }
-
+        for(var i=0;i<25;i++){
+          if(this.answer[i] == undefined){
+            this.answer[i] = [] 
+          }
+        }
         console.log('updated from local',this.answer,this.time);
       }
         this.fun();
@@ -79,17 +82,18 @@ export class QuizComponent implements OnInit {
 
     }
 
-
+   
   }
   first(){
     try {
       const errorField =  this.renderer.selectRootElement('#que');
         errorField.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			
     } catch (err) {
 
 }
 }
-
+  
   startTimer = function(){
      var int =  setInterval(() => {
           this.time --;
@@ -113,7 +117,7 @@ export class QuizComponent implements OnInit {
 
     this.clock = sm  + ":" + ss;
     return this.clock;
-
+    
   }
 
 
@@ -121,17 +125,17 @@ export class QuizComponent implements OnInit {
       this.qjson = JSON.parse(sessionStorage.getItem('quizArray'))
     for(var i=0;i<this.qjson.length;i++) {
       var element = this.qjson[i];
-      var id:number = JSON.parse(Object.keys(element)[0]);
+      var id = Object.keys(element);
       var value : Object = Object.values(element)
       if(!this.flag)
-        this.answer[id] = []
+        this.answer[i+1] = []
       this.questionObject.push(value[0])
     };
-
+    
     console.log(this.questionObject);
     this.renderQuestion();
-
-
+    
+  
   }
   public clock = "15:00"
   next = function(){
@@ -153,7 +157,7 @@ export class QuizComponent implements OnInit {
     this.renderQuestion();
   }
   toogleReview = function(){
-      this.first()
+       this.first()
 
       var i = this.i-1
       if(this.review[i] == undefined){
@@ -163,6 +167,8 @@ export class QuizComponent implements OnInit {
         this.review[i]= !this.review[i];
 
       }
+	  this.i++;
+    this.renderQuestion();
       console.log(this.review)
   }
   private gridAnswer = {}
@@ -221,13 +227,13 @@ export class QuizComponent implements OnInit {
       let formData = new FormData();
       for(var b in body){
       formData.append(b, body[b])
-
+  
       }
       console.log(JSON.stringify(body))
       fetch('https://save2rent.com/app2021/api/public/submit',{
         method:'POST',
         body:formData,
-
+  
       })
       .then(res => res.json())
       .then(re => {
@@ -236,7 +242,7 @@ export class QuizComponent implements OnInit {
         this.spinner.hide();
 
             sessionStorage.setItem('result',JSON.stringify(re))
-            this.router.navigate(['/result'])
+            this.router.navigate(['/result'])        
 
         }
       })

@@ -1,0 +1,21 @@
+
+ 
+<div class="container">
+<div class="row">
+   <div style="justify-content: center;" class="col-12">
+      <div>
+         <p style="text-align:center;" ><a href="#"> <img class="logo" src="../../assets/quiz/images/logo.png"></a></p>
+      </div>
+   </div>
+   </div>
+<div class="row pd100">
+<div class="col-md-4 pd50" *ngFor="let que of data">
+<div class="card {{que.status}}">
+<p>Question : {{que.question}}</p>
+<button class="btn btn-primary">You Answered :  {{que.youranswer}}</button>
+<button class="btn btn-danger">Answer : {{que.correctanswer}}</button>
+</div>
+</div>
+</div>
+
+</div>
